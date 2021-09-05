@@ -17,6 +17,7 @@ class PhysicsComponent {
         std::vector<GameObject*> collisions;
         void check_collision(GameObject *o);
         void add_collision(GameObject *o);
+        void clear_collisions();
 };
 
 

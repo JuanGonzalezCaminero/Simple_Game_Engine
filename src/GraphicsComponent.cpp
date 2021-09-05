@@ -19,10 +19,8 @@ GraphicsComponent::GraphicsComponent(char const *path, SDL_Renderer *r, GameObje
     rect.y=parent->pos_y;
 }
 
-GraphicsComponent::GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, GameObject *parent): texture(texture), renderer(renderer), parent(parent)
+GraphicsComponent::GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, GameObject *parent, bool shared): texture(texture), renderer(renderer), parent(parent), shared_texture(shared)
 {
-    shared_texture = true;
-
     rect.w=parent->width;
     rect.h=parent->height;
     rect.x=parent->pos_x;
@@ -56,6 +54,10 @@ SDL_Renderer *GraphicsComponent::get_renderer() const {
 
 GameObject *GraphicsComponent::get_parent() const {
     return parent;
+}
+
+void GraphicsComponent::set_texture(SDL_Texture *t) {
+    texture = t;
 }
 
 

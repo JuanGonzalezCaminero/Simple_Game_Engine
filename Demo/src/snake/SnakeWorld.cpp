@@ -10,7 +10,7 @@ void SnakeWorld::update(std::chrono::duration<double> delta) {
     //Generate a new fruit
     if(fruit==NULL)
     {
-        fruit = new SimpleObject((rand()%(tiles))*tile_size, pos_y + (rand()%(tiles))*tile_size, tile_size, tile_size);
+        fruit = new SimpleObject((rand()%(tiles))*tile_size, (rand()%(tiles))*tile_size, tile_size, tile_size);
         fruit->add_graphics(new GraphicsComponent("../assets/textures/snake_fruit.bmp", graphics_component->get_renderer(), fruit));
         fruit->add_physics(new PhysicsComponent(fruit));
         add(fruit);
@@ -24,7 +24,7 @@ void SnakeWorld::update(std::chrono::duration<double> delta) {
         delete fruit;
         fruit=NULL;
         dynamic_cast<SnakeHead*>(components.front())->increase_length(1);
-        components.front()->get_physics()->collisions.clear();
+        components.front()->get_physics()->clear_collisions();
     }
 
     ContainerObject::update(delta);

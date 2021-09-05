@@ -30,12 +30,14 @@ class GraphicsComponent{
 
         //Constructor 1: Load texture from a file
         GraphicsComponent(char const *path, SDL_Renderer *renderer, GameObject *parent);
-        //Constructor 2: Get the texture from the caller
-        GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, GameObject *parent);
+        //Constructor 2: Get the texture from the caller, indicates whether the texture should be destroyed
+        //when the GraphicsComponent is destroyed
+        GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, GameObject *parent, bool shared);
 
         void render();
         void load_texture(const char *path);
         virtual ~GraphicsComponent();
+        void set_texture(SDL_Texture *t);
 
         GameObject *get_parent() const;
 };

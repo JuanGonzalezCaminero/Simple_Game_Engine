@@ -22,3 +22,7 @@ void PhysicsComponent::check_collision(GameObject *o) {
 void PhysicsComponent::add_collision(GameObject *o) {
     collisions.push_back(o);
 }
+
+void PhysicsComponent::clear_collisions() {
+    collisions.clear();
+}

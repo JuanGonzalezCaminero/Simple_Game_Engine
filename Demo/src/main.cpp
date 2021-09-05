@@ -13,6 +13,8 @@
 #include "SDL_gamecontroller.h"
 #include "../include/snake/SnakeWorld.h"
 #include "../include/snake/SnakeRoot.h"
+#include "../include/snake/TextObject.h"
+#include "../include/snake/CounterTextObject.h"
 
 int main(int argc, char *argv[]) {
     SDL_Window *window = nullptr;
@@ -36,6 +38,7 @@ int main(int argc, char *argv[]) {
     // Initialize SDL and its File I/O, Threading (Both by default), Video and
     // Event Handling (Initialized implicitly by the video subsystem) subsystems
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
+    TTF_Init();
 
     if(SDL_NumJoysticks()>0)
     {
@@ -61,8 +64,8 @@ int main(int argc, char *argv[]) {
     world->add_graphics(new GraphicsComponent("../assets/textures/snake_world.bmp", renderer, world));
 
     //Snake
-    SnakeHead *snake = new SnakeHead(world->pos_x + snake_world_size/2,
-                                     world->pos_y + snake_world_size/2,
+    SnakeHead *snake = new SnakeHead(snake_world_size/2,
+                                     snake_world_size/2,
                                      snake_world_size/snake_world_tiles,
                                      snake_world_size/snake_world_tiles,
                                      4,
@@ -77,6 +80,15 @@ int main(int argc, char *argv[]) {
     //Scoreboard
     ContainerObject *scoreboard = new ContainerObject(0, 0, scoreboard_width, scoreboard_height);
     scoreboard ->add_graphics(new GraphicsComponent("../assets/textures/snake_scoreboard.bmp", renderer, scoreboard));
+
+    //Scoreboard text
+    TTF_Font *font = TTF_OpenFont("../assets/fonts/arial.ttf", 24);
+    TextObject *score_text = new TextObject(20, 20, 100, 30, "Score:", font, new SDL_Color{255, 255, 255}, renderer);
+    scoreboard -> add(score_text);
+
+    //Scoreboard count
+    CounterTextObject<int> *score_count = new CounterTextObject<int>(130, 20, 25, 30, 0, font, new SDL_Color{255, 255, 255}, renderer);
+    scoreboard ->add(score_count);
 
     //Game Root
     SnakeRoot *snake_root = new SnakeRoot(0, 0, window_width, window_height);
