@@ -15,8 +15,18 @@ void ContainerObject::add(GameObject *o)
 
 void ContainerObject::remove(GameObject *o)
 {
+    /*
+    int i=0;
+    for(auto component: components)
+    {
+        if(component == o)
+        {
+            components.
+        }
+    }
+     */
     //Compare references and remove the requested object
-    //std::remove_if(this -> components.begin(), this -> components.end(), [&](const auto& item){item == o});
+    components.remove(o);
 }
 
 /*

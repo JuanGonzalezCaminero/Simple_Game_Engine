@@ -4,25 +4,26 @@
 
 #include "../include/InputHandler.h"
 #include <iostream>
+#include "unordered_map"
 
 InputHandler::InputHandler() {}
 
 
 void InputHandler::process_input()
 {
+    GameEvent game_event = GameEvent();
     //Process events since the last call
     while (SDL_PollEvent(&event) != 0)
     {
         switch (event.type)
         {
             case SDL_QUIT:
-                notify(GameEvent(GameEventType::Quit));
+                game_event.set_type(GameEventType::Quit);
                 break;
             case SDL_WINDOWEVENT:
                 switch (event.window.event)
                 {
                     case SDL_WINDOWEVENT_RESIZED:
-                        //SDL_GetWindowSize(window, &window_width, &window_height);
                         break;
                     default:
                         break;
@@ -31,19 +32,19 @@ void InputHandler::process_input()
             case SDL_KEYDOWN:
                 if(*SDL_GetKeyName(event.key.keysym.sym) == 'A')
                 {
-                    notify(GameEvent(GameEventType::MoveLeft));
+                    game_event.set_type(GameEventType::LeftPressed);
                 }
                 else if(*SDL_GetKeyName(event.key.keysym.sym) == 'D')
                 {
-                    notify(GameEvent(GameEventType::MoveRight));
+                    game_event.set_type(GameEventType::RightPressed);
                 }
                 else if(*SDL_GetKeyName(event.key.keysym.sym) == 'S')
                 {
-                    notify(GameEvent(GameEventType::MoveDown));
+                    game_event.set_type(GameEventType::DownPressed);
                 }
                 else if(*SDL_GetKeyName(event.key.keysym.sym) == 'W')
                 {
-                    notify(GameEvent(GameEventType::MoveUp));
+                    game_event.set_type(GameEventType::UpPressed);
                 }
                 break;
             case SDL_CONTROLLERBUTTONDOWN:
@@ -51,24 +52,31 @@ void InputHandler::process_input()
                 //std::cout << event.cbutton.button << std::endl;
                 if(event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_LEFT)
                 {
-                    notify(GameEvent(GameEventType::MoveLeft));
+                    game_event.set_type(GameEventType::LeftPressed);
                 }
                 else if(event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT)
                 {
-                    notify(GameEvent(GameEventType::MoveRight));
+                    game_event.set_type(GameEventType::RightPressed);
                 }
                 else if(event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_DOWN)
                 {
-                    notify(GameEvent(GameEventType::MoveDown));
+                    game_event.set_type(GameEventType::DownPressed);
                 }
                 else if(event.cbutton.button == SDL_CONTROLLER_BUTTON_DPAD_UP)
                 {
-                    notify(GameEvent(GameEventType::MoveUp));
+                    game_event.set_type(GameEventType::UpPressed);
                 }
+                break;
+            case SDL_MOUSEMOTION:
+                game_event.set_type(GameEventType::MouseMove);
+                game_event.set_x(event.motion.x);
+                game_event.set_y(event.motion.y);
                 break;
             default:
                 break;
         }
+
+        notify(game_event);
     }
 }
 

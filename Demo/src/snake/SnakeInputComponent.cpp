@@ -5,22 +5,22 @@
 #include "../../include/snake/SnakeInputComponent.h"
 
 int SnakeInputComponent::process(GameEvent e) {
-    if(e.type == GameEventType::MoveUp)
+    if(e.get_type() == GameEventType::UpPressed)
     {
         parent->moving=1;
         parent->direction=3;
     }
-    else if(e.type == GameEventType::MoveRight)
+    else if(e.get_type() == GameEventType::RightPressed)
     {
         parent->moving=1;
         parent->direction=0;
     }
-    else if(e.type == GameEventType::MoveDown)
+    else if(e.get_type() == GameEventType::DownPressed)
     {
         parent->moving=1;
         parent->direction=1;
     }
-    else if(e.type == GameEventType::MoveLeft)
+    else if(e.get_type() == GameEventType::LeftPressed)
     {
         parent->moving=1;
         parent->direction=2;

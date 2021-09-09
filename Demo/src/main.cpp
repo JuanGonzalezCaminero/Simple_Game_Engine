@@ -1,20 +1,23 @@
 #include <iostream>
+#include "chrono"
+
 #include "SDL.h"
 #include "SDL_image.h"
-#include "../../include/InputHandler.h"
+
+#include "InputHandler.h"
+#include "GameObject.h"
+#include "GraphicsComponent.h"
+#include "SimpleObject.h"
+#include "ContainerObject.h"
+#include "SDL_gamecontroller.h"
+
 #include "../include/GameInputComponent.h"
-#include "../../include/GameObject.h"
-#include "../../include/GraphicsComponent.h"
-#include "../../include/SimpleObject.h"
-#include "../../include/ContainerObject.h"
 #include "../include/snake/SnakeHead.h"
 #include "../include/snake/SnakeInputComponent.h"
-#include "chrono"
-#include "SDL_gamecontroller.h"
 #include "../include/snake/SnakeWorld.h"
 #include "../include/snake/SnakeRoot.h"
-#include "../include/snake/TextObject.h"
-#include "../include/snake/CounterTextObject.h"
+#include "TextObject.h"
+#include "CounterTextObject.h"
 
 int main(int argc, char *argv[]) {
     SDL_Window *window = nullptr;
@@ -59,8 +62,24 @@ int main(int argc, char *argv[]) {
     int scoreboard_height = window_height-snake_world_size;
     int snake_world_tiles = 20;
 
+    //Scoreboard
+    ContainerObject *scoreboard = new ContainerObject(0, 0, scoreboard_width, scoreboard_height);
+    scoreboard ->add_graphics(new GraphicsComponent("../assets/textures/snake_scoreboard.bmp", renderer, scoreboard));
+
+    //Scoreboard text
+    TTF_Font *font = TTF_OpenFont("../assets/fonts/arial.ttf", 24);
+    TextObject *score_text = new TextObject(20, 20, 100, 30, "Score:", font, new SDL_Color{255, 255, 255}, renderer);
+
+    //Scoreboard count
+    CounterTextObject<int> *score_count = new CounterTextObject<int>(130, 20, 25, 30, 0, font, new SDL_Color{255, 255, 255}, renderer);
+
+
+
     //World
-    SnakeWorld *world = new SnakeWorld(0, scoreboard_height, snake_world_size, snake_world_size, snake_world_tiles);
+    //The Game world gets a reference to the scoreboard and score counter, in order to update the score whenever the snake
+    // eats a fruit and to activate the reset button on game over
+    SnakeWorld *world = new SnakeWorld(0, scoreboard_height, snake_world_size, snake_world_size, snake_world_tiles,
+                                       scoreboard, score_count);
     world->add_graphics(new GraphicsComponent("../assets/textures/snake_world.bmp", renderer, world));
 
     //Snake
@@ -77,23 +96,24 @@ int main(int argc, char *argv[]) {
 
     input_handler.add(snake->get_input());
 
-    //Scoreboard
-    ContainerObject *scoreboard = new ContainerObject(0, 0, scoreboard_width, scoreboard_height);
-    scoreboard ->add_graphics(new GraphicsComponent("../assets/textures/snake_scoreboard.bmp", renderer, scoreboard));
-
-    //Scoreboard text
-    TTF_Font *font = TTF_OpenFont("../assets/fonts/arial.ttf", 24);
-    TextObject *score_text = new TextObject(20, 20, 100, 30, "Score:", font, new SDL_Color{255, 255, 255}, renderer);
-    scoreboard -> add(score_text);
-
-    //Scoreboard count
-    CounterTextObject<int> *score_count = new CounterTextObject<int>(130, 20, 25, 30, 0, font, new SDL_Color{255, 255, 255}, renderer);
-    scoreboard ->add(score_count);
-
     //Game Root
     SnakeRoot *snake_root = new SnakeRoot(0, 0, window_width, window_height);
 
+    //Build the game tree:
+    /*
+     * root
+     *   |-----------|
+     *   |           |
+     * world     scoreboard
+     *   |           |------------------|
+     *   |           |                  |
+     * snake     score_text        score_count
+     */
+
     world->add(snake);
+
+    scoreboard -> add(score_text);
+    scoreboard ->add(score_count);
 
     snake_root->add(world);
     snake_root->add(scoreboard);

@@ -5,7 +5,7 @@
 #ifndef SDL_INPUTHANDLING_SNAKEHEAD_H
 #define SDL_INPUTHANDLING_SNAKEHEAD_H
 
-#include "../../../include/ContainerObject.h"
+#include "ContainerObject.h"
 #include "SnakeBody.h"
 
 class SnakeHead : public ContainerObject{

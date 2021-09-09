@@ -6,6 +6,7 @@
 #define SDL_INPUTHANDLING_INPUTCOMPONENT_H
 
 #include "GameEvent.h"
+#include "unordered_map"
 
 class GameObject;
 

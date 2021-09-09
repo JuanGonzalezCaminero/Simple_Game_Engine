@@ -5,7 +5,7 @@
 #ifndef SDL_INPUTHANDLING_SNAKEINPUTCOMPONENT_H
 #define SDL_INPUTHANDLING_SNAKEINPUTCOMPONENT_H
 
-#include "../../../include/InputComponent.h"
+#include "InputComponent.h"
 #include "SnakeHead.h"
 
 class SnakeInputComponent : public InputComponent {

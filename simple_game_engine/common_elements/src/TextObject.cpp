@@ -2,7 +2,7 @@
 // Created by Juan on 04/09/2021.
 //
 
-#include "../../include/snake/TextObject.h"
+#include "../include/TextObject.h"
 
 TextObject::TextObject(int pos_x, int pos_y, int width, int height,
                        const std::string& text, TTF_Font *font, SDL_Color *text_color, SDL_Renderer *renderer) :

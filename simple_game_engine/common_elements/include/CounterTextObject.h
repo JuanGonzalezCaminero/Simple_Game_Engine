@@ -17,12 +17,15 @@ class CounterTextObject : public TextObject{
                             TextObject(posX,posY,width,height,std::to_string(number),font,textColor,renderer),number(number){};
         void add(N n) {
             number+=n;
+            set_text(std::to_string(number));
         }
         void sub(N n) {
             number-=n;
+            set_text(std::to_string(number));
         }
         void set_count(N n) {
             number=n;
+            set_text(std::to_string(number));
         }
         N get_count() const {
             return number;

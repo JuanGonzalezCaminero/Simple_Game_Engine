@@ -5,7 +5,7 @@
 #ifndef SDL_INPUTHANDLING_SNAKEBODY_H
 #define SDL_INPUTHANDLING_SNAKEBODY_H
 
-#include "../../../include/SimpleObject.h"
+#include "SimpleObject.h"
 
 class SnakeBody : public SimpleObject{
     public:

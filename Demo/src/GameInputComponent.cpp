@@ -8,7 +8,7 @@ GameInputComponent::GameInputComponent(GameObject *parent, SDL_Window *win, SDL_
         : InputComponent(NULL), window(win), renderer(rend), quit(q) {}
 
 int GameInputComponent::process(GameEvent e) {
-    switch(e.type)
+    switch(e.get_type())
     {
         case(GameEventType::Quit):
             *quit = 1;

@@ -5,19 +5,23 @@
 #ifndef SDL_INPUTHANDLING_SNAKEWORLD_H
 #define SDL_INPUTHANDLING_SNAKEWORLD_H
 
-#include "../../../include/ContainerObject.h"
-#include "../../../include/SimpleObject.h"
+#include "ContainerObject.h"
+#include "SimpleObject.h"
 #include "SnakeHead.h"
+#include "../../../simple_game_engine/common_elements/include/CounterTextObject.h"
 
 class SnakeWorld : public ContainerObject{
     private:
         SimpleObject *fruit = NULL;
+        SnakeHead *snake = NULL;
+        ContainerObject *scoreboard = NULL;
+        CounterTextObject<int> *score_count = NULL;
         int tiles;
         int tile_size;
     public:
-        SnakeWorld(int pos_x, int pos_y, int size_x, int size_y, int tiles);
+        SnakeWorld(int pos_x, int pos_y, int size_x, int size_y, int tiles, ContainerObject *scoreboard,
+                   CounterTextObject<int> *score_count);
         void update(std::chrono::duration<double> delta) override;
-        void add_snake(SnakeHead *s);
 };
 
 

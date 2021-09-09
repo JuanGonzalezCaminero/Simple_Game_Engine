@@ -6,8 +6,8 @@
 #define SDL_INPUTHANDLING_GAMEINPUTCOMPONENT_H
 
 #include "SDL.h"
-#include "../../include/GameEvent.h"
-#include "../../include/InputComponent.h"
+#include "GameEvent.h"
+#include "InputComponent.h"
 
 class GameInputComponent : public InputComponent{
     private:

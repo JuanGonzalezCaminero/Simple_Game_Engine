@@ -20,17 +20,21 @@ void SnakeWorld::update(std::chrono::duration<double> delta) {
     check_collisions();
     if(!components.front()->get_physics()->collisions.empty())
     {
-        components.pop_back();
+        remove(fruit);
         delete fruit;
         fruit=NULL;
         dynamic_cast<SnakeHead*>(components.front())->increase_length(1);
         components.front()->get_physics()->clear_collisions();
+        score_count->add(1);
     }
 
     ContainerObject::update(delta);
 }
 
-SnakeWorld::SnakeWorld(int pos_x, int pos_y, int size_x, int size_y, int tiles) : ContainerObject(pos_x, pos_y, size_x, size_y), tiles(tiles)
+SnakeWorld::SnakeWorld(int pos_x, int pos_y, int size_x, int size_y, int tiles, ContainerObject *scoreboard,
+                       CounterTextObject<int> *score_count) :
+                        ContainerObject(pos_x, pos_y, size_x, size_y),
+                        tiles(tiles), scoreboard(scoreboard), score_count(score_count)
 {
     tile_size = size_x/tiles;
 }

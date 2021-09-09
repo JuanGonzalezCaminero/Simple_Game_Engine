@@ -5,7 +5,7 @@
 #ifndef SDL_INPUTHANDLING_TEXTOBJECT_H
 #define SDL_INPUTHANDLING_TEXTOBJECT_H
 
-#include "../../../include/SimpleObject.h"
+#include "SimpleObject.h"
 #include "SDL_ttf.h"
 
 #include "iostream"

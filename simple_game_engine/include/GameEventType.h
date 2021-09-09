@@ -6,10 +6,15 @@
 #define SDL_INPUTHANDLING_GAMEEVENTTYPE_H
 
 enum class GameEventType {
-    MoveRight,
-    MoveLeft,
-    MoveDown,
-    MoveUp,
+    RightPressed,
+    LeftPressed,
+    DownPressed,
+    UpPressed,
+    RightReleased,
+    LeftReleased,
+    DownReleased,
+    UpReleased,
+    MouseMove,
     Pause,
     Unpause,
     Click,

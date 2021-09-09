@@ -5,7 +5,7 @@
 #ifndef SDL_INPUTHANDLING_SNAKEROOT_H
 #define SDL_INPUTHANDLING_SNAKEROOT_H
 
-#include "../../../include/ContainerObject.h"
+#include "ContainerObject.h"
 
 class SnakeRoot : public ContainerObject{
     public:
