@@ -16,6 +16,7 @@
 #include "../include/snake/SnakeInputComponent.h"
 #include "../include/snake/SnakeWorld.h"
 #include "../include/snake/SnakeRoot.h"
+#include "../include/snake/ExitButtonInputComponent.h"
 #include "TextObject.h"
 #include "CounterTextObject.h"
 
@@ -68,12 +69,17 @@ int main(int argc, char *argv[]) {
 
     //Scoreboard text
     TTF_Font *font = TTF_OpenFont("../assets/fonts/arial.ttf", 24);
-    TextObject *score_text = new TextObject(20, 20, 100, 30, "Score:", font, new SDL_Color{255, 255, 255}, renderer);
+    TextObject *score_text = new TextObject(20, 20, 0, 0, "Score:", font, new SDL_Color{255, 255, 255}, renderer,
+                                            true);
 
     //Scoreboard count
-    CounterTextObject<int> *score_count = new CounterTextObject<int>(130, 20, 25, 30, 0, font, new SDL_Color{255, 255, 255}, renderer);
+    CounterTextObject<int> *score_count = new CounterTextObject<int>(score_text->get_width() + score_text->get_x() + 5, 20, 0, 0, 0, font,
+                                                                     new SDL_Color{255, 255, 255}, renderer, true);
 
-
+    //Exit button
+    TextObject *exit_text = new TextObject(0, 0, 0, 0, "Exit", font, new SDL_Color{255, 255, 255}, renderer, true);
+    ContainerObject *exit_button = new ContainerObject(scoreboard_width-exit_text->get_width()-20, 10, exit_text->get_width(), exit_text->get_height());
+    exit_button->add_input(new ExitButtonInputComponent(exit_button));
 
     //World
     //The Game world gets a reference to the scoreboard and score counter, in order to update the score whenever the snake
@@ -94,10 +100,12 @@ int main(int argc, char *argv[]) {
     snake->add_input(new SnakeInputComponent(snake));
     snake->add_physics(new PhysicsComponent(snake));
 
-    input_handler.add(snake->get_input());
-
     //Game Root
     SnakeRoot *snake_root = new SnakeRoot(0, 0, window_width, window_height);
+
+    //Connect Input consumers to the input handler
+    input_handler.add(snake->get_input());
+    input_handler.add(exit_button->get_input());
 
     //Build the game tree:
     /*
@@ -105,15 +113,21 @@ int main(int argc, char *argv[]) {
      *   |-----------|
      *   |           |
      * world     scoreboard
-     *   |           |------------------|
-     *   |           |                  |
-     * snake     score_text        score_count
+     *   |           |------------------|------------------|
+     *   |           |                  |                  |
+     * snake     score_text        score_count        exit_button
+     *                                                     |
+     *                                                     |
+     *                                                 exit_text
      */
 
     world->add(snake);
 
+    exit_button->add(exit_text);
+
     scoreboard -> add(score_text);
-    scoreboard ->add(score_count);
+    scoreboard -> add(score_count);
+    scoreboard -> add(exit_button);
 
     snake_root->add(world);
     snake_root->add(scoreboard);

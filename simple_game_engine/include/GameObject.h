@@ -15,12 +15,12 @@ class GameObject {
         GraphicsComponent *graphics_component = NULL;
         InputComponent *input_component = NULL;
         PhysicsComponent *physics_component = NULL;
-    public:
-        int pos_x;
-        int pos_y;
+        int x;
+        int y;
         int width;
         int height;
 
+public:
         GameObject(int pos_x, int pos_y, int width, int height);
         virtual void update(std::chrono::duration<double> delta) = 0;
         virtual void render() = 0;
@@ -31,6 +31,15 @@ class GameObject {
         GraphicsComponent *get_graphics() const;
         InputComponent *get_input() const;
         PhysicsComponent *get_physics() const;
+
+        int get_x() const;
+        void set_x(int pos_x);
+        int get_y() const;
+        void set_y(int pos_y);
+        int get_width() const;
+        void set_width(int width);
+        int get_height() const;
+        void set_height(int height);
 
         virtual ~GameObject();
 };

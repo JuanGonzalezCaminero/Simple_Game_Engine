@@ -14,6 +14,7 @@ enum class GameEventType {
     LeftReleased,
     DownReleased,
     UpReleased,
+    MouseLeftPressed,
     MouseMove,
     Pause,
     Unpause,

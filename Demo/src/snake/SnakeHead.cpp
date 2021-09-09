@@ -31,16 +31,16 @@ void SnakeHead::update(std::chrono::duration<double> delta)
         //Move in the current direction
         switch (direction) {
             case 0:
-                pos_x += width;
+                x += width;
                 break;
             case 1:
-                pos_y += height;
+                y += height;
                 break;
             case 2:
-                pos_x -= width;
+                x -= width;
                 break;
             case 3:
-                pos_y -= height;
+                y -= height;
                 break;
             default:
                 break;
@@ -66,10 +66,10 @@ void SnakeHead::update(std::chrono::duration<double> delta)
         }
 
         //Collisions with the world`s borders
-        if(pos_x < world->pos_x ||
-            pos_y < world->pos_y ||
-            pos_x >= world->pos_x+world->width ||
-            pos_y >= world->pos_y+world->height)
+        if(x < world->get_x() ||
+           y < world->get_y() ||
+           x >= world->get_x() + world->get_width() ||
+           y >= world->get_y() + world->get_height())
         {
             moving=0;
         }

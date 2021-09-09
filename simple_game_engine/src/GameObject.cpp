@@ -6,8 +6,8 @@
 
 GameObject::GameObject(int pos_x, int pos_y, int width, int height)
 {
-    this -> pos_x = pos_x;
-    this -> pos_y = pos_y;
+    this -> x = pos_x;
+    this -> y = pos_y;
     this -> width = width;
     this -> height = height;
 }
@@ -41,5 +41,39 @@ InputComponent *GameObject::get_input() const {
 PhysicsComponent *GameObject::get_physics() const {
     return physics_component;
 }
+
+int GameObject::get_x() const {
+    return x;
+}
+
+void GameObject::set_x(int pos_x) {
+    GameObject::x = pos_x;
+}
+
+int GameObject::get_y() const {
+    return y;
+}
+
+void GameObject::set_y(int pos_y) {
+    GameObject::y = pos_y;
+}
+
+int GameObject::get_width() const {
+    return width;
+}
+
+void GameObject::set_width(int width) {
+    GameObject::width = width;
+}
+
+int GameObject::get_height() const {
+    return height;
+}
+
+void GameObject::set_height(int height) {
+    GameObject::height = height;
+}
+
+
 
 

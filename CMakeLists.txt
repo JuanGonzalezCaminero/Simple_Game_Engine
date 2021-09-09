@@ -20,7 +20,7 @@ add_executable(SDL_InputHandling Demo/src/main.cpp simple_game_engine/src/InputH
         Demo/include/snake/SnakeHead.h Demo/src/snake/SnakeInputComponent.cpp Demo/include/snake/SnakeInputComponent.h
         simple_game_engine/src/InputComponent.cpp simple_game_engine/src/PhysicsComponent.cpp simple_game_engine/include/PhysicsComponent.h Demo/src/snake/SnakeWorld.cpp
         Demo/include/snake/SnakeWorld.h Demo/src/snake/SnakeRoot.cpp Demo/include/snake/SnakeRoot.h
-        simple_game_engine/common_elements/src/TextObject.cpp simple_game_engine/common_elements/include/TextObject.h simple_game_engine/common_elements/src/CounterTextObject.cpp simple_game_engine/common_elements/include/CounterTextObject.h)
+        simple_game_engine/common_elements/src/TextObject.cpp simple_game_engine/common_elements/include/TextObject.h simple_game_engine/common_elements/src/CounterTextObject.cpp simple_game_engine/common_elements/include/CounterTextObject.h Demo/src/snake/ExitButtonInputComponent.cpp Demo/include/snake/ExitButtonInputComponent.h)
 #Libraries to link when compiling this file
 target_link_libraries(SDL_InputHandling ${SDL2_LIBRARIES})
 target_link_libraries(SDL_InputHandling ${SDL2_IMAGE_LIBRARIES})

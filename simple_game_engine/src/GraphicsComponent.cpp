@@ -13,23 +13,25 @@ GraphicsComponent::GraphicsComponent(char const *path, SDL_Renderer *r, GameObje
 
     load_texture(texture_path);
 
-    rect.w=parent->width;
-    rect.h=parent->height;
-    rect.x=parent->pos_x;
-    rect.y=parent->pos_y;
+    rect.w=parent->get_width();
+    rect.h=parent->get_height();
+    rect.x= parent->get_x();
+    rect.y= parent->get_y();
 }
 
 GraphicsComponent::GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, GameObject *parent, bool shared): texture(texture), renderer(renderer), parent(parent), shared_texture(shared)
 {
-    rect.w=parent->width;
-    rect.h=parent->height;
-    rect.x=parent->pos_x;
-    rect.y=parent->pos_y;
+    rect.w=parent->get_width();
+    rect.h=parent->get_height();
+    rect.x= parent->get_x();
+    rect.y= parent->get_y();
 }
 
 void GraphicsComponent::render() {
-    rect.x=parent->pos_x;
-    rect.y=parent->pos_y;
+    rect.w=parent->get_width();
+    rect.h=parent->get_height();
+    rect.x= parent->get_x();
+    rect.y= parent->get_y();
     SDL_RenderCopy(renderer, texture, NULL, &rect);
 }
 

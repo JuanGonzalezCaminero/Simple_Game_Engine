@@ -16,10 +16,14 @@ class TextObject : public SimpleObject{
         std::string text;
         TTF_Font *font;
         SDL_Color *text_color;
+        bool adapt_to_text;
     public:
-        TextObject(int pos_x, int pos_y, int width, int height, const std::string& text, TTF_Font *font, SDL_Color *text_color, SDL_Renderer *renderer);
+        //If adapt_to_text is true, the width and height will match those of the generated text texture
+        TextObject(int pos_x, int pos_y, int width, int height, const std::string &text, TTF_Font *font,
+                   SDL_Color *text_color, SDL_Renderer *renderer, bool adapt_to_text);
         SDL_Texture *generate_texture(const std::string& t, TTF_Font *f, SDL_Color *c, SDL_Renderer *renderer);
         void set_text(const std::string& t);
+        void adapt_size(SDL_Texture *texture);
 };
 
 

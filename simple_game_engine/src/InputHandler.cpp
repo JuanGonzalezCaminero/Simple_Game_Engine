@@ -72,6 +72,11 @@ void InputHandler::process_input()
                 game_event.set_x(event.motion.x);
                 game_event.set_y(event.motion.y);
                 break;
+            case SDL_MOUSEBUTTONDOWN:
+                if(event.button.button == SDL_BUTTON_LEFT)
+                {
+                    game_event.set_type(GameEventType::MouseLeftPressed);
+                }
             default:
                 break;
         }

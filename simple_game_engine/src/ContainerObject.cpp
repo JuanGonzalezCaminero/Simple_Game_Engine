@@ -8,8 +8,8 @@
 void ContainerObject::add(GameObject *o)
 {
     //Take the object's coordinates as local coordinates within this ContainerObject
-    o->pos_x += pos_x;
-    o->pos_y += pos_y;
+    o->set_x(o->get_x() + x);
+    o->set_y(o->get_y() + y);
     this -> components.push_back(o);
 }
 

@@ -12,9 +12,9 @@ class CounterTextObject : public TextObject{
     private:
         N number;
     public:
-        CounterTextObject(int posX, int posY, int width, int height, N number, TTF_Font *font,
-                            SDL_Color *textColor, SDL_Renderer *renderer) :
-                            TextObject(posX,posY,width,height,std::to_string(number),font,textColor,renderer),number(number){};
+        CounterTextObject(int posX, int posY, int width, int height, N number, TTF_Font *font, SDL_Color *textColor,
+                          SDL_Renderer *renderer, bool adapt_to_text) :
+                          TextObject(posX, posY, width, height, std::to_string(number), font, textColor, renderer, adapt_to_text), number(number){};
         void add(N n) {
             number+=n;
             set_text(std::to_string(number));
