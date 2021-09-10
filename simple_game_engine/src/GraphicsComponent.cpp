@@ -7,25 +7,15 @@
 
 #include "iostream"
 
-GraphicsComponent::GraphicsComponent(char const *path, SDL_Renderer *r, GameObject *p): texture_path(path), renderer(r), parent(p)
+GraphicsComponent::GraphicsComponent(char const *path, SDL_Renderer *r): texture_path(path), renderer(r)
 {
     shared_texture = false;
 
     load_texture(texture_path);
-
-    rect.w=parent->get_width();
-    rect.h=parent->get_height();
-    rect.x= parent->get_x();
-    rect.y= parent->get_y();
 }
 
-GraphicsComponent::GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, GameObject *parent, bool shared): texture(texture), renderer(renderer), parent(parent), shared_texture(shared)
-{
-    rect.w=parent->get_width();
-    rect.h=parent->get_height();
-    rect.x= parent->get_x();
-    rect.y= parent->get_y();
-}
+GraphicsComponent::GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, bool shared):
+texture(texture), renderer(renderer), shared_texture(shared) {}
 
 void GraphicsComponent::render() {
     rect.w=parent->get_width();
@@ -60,6 +50,10 @@ GameObject *GraphicsComponent::get_parent() const {
 
 void GraphicsComponent::set_texture(SDL_Texture *t) {
     texture = t;
+}
+
+void GraphicsComponent::set_parent(GameObject *parent) {
+    GraphicsComponent::parent = parent;
 }
 
 

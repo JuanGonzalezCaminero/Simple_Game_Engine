@@ -24,8 +24,8 @@ void SnakeHead::update(std::chrono::duration<double> delta)
 
         //Add a new body part at the head's position
         SnakeBody *new_part = new SnakeBody(0, 0, width, height, length);
-        new_part->add_graphics(new GraphicsComponent(graphics_component->get_texture(), graphics_component->get_renderer(), new_part, true));
-        new_part->add_physics(new PhysicsComponent(new_part));
+        new_part->add_graphics(new GraphicsComponent(graphics_component->get_texture(), graphics_component->get_renderer(), true));
+        new_part->add_physics(new PhysicsComponent());
         add(new_part);
 
         //Move in the current direction

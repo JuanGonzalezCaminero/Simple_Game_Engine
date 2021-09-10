@@ -5,7 +5,7 @@
 #include "../include/GameInputComponent.h"
 
 GameInputComponent::GameInputComponent(GameObject *parent, SDL_Window *win, SDL_Renderer *rend, int *q)
-        : InputComponent(NULL), window(win), renderer(rend), quit(q) {}
+        : InputComponent(), window(win), renderer(rend), quit(q) {}
 
 int GameInputComponent::process(GameEvent e) {
     switch(e.get_type())

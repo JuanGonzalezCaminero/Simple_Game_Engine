@@ -21,7 +21,7 @@ class GraphicsComponent{
         SDL_Texture *texture;
         SDL_Renderer *renderer;
         struct SDL_Rect rect = {0,0,0,0};
-        GameObject *parent;
+        GameObject *parent = NULL;
         bool shared_texture;
 
     public:
@@ -29,10 +29,10 @@ class GraphicsComponent{
         SDL_Texture *get_texture() const;
 
         //Constructor 1: Load texture from a file
-        GraphicsComponent(char const *path, SDL_Renderer *renderer, GameObject *parent);
+        GraphicsComponent(char const *path, SDL_Renderer *renderer);
         //Constructor 2: Get the texture from the caller, indicates whether the texture should be destroyed
         //when the GraphicsComponent is destroyed
-        GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, GameObject *parent, bool shared);
+        GraphicsComponent(SDL_Texture *texture, SDL_Renderer *renderer, bool shared);
 
         void render();
         void load_texture(const char *path);
@@ -40,6 +40,7 @@ class GraphicsComponent{
         void set_texture(SDL_Texture *t);
 
         GameObject *get_parent() const;
+        void set_parent(GameObject *parent);
 };
 
 

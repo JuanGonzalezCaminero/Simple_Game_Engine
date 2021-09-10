@@ -13,11 +13,14 @@ class PhysicsComponent {
     private:
         GameObject *parent;
     public:
-        PhysicsComponent(GameObject *parent);
+        PhysicsComponent();
         std::vector<GameObject*> collisions;
         void check_collision(GameObject *o);
         void add_collision(GameObject *o);
         void clear_collisions();
+
+        GameObject *get_parent() const;
+        void set_parent(GameObject *parent);
 };
 
 

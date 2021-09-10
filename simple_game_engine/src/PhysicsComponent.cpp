@@ -5,7 +5,7 @@
 #include "../include/PhysicsComponent.h"
 #include "../include/GameObject.h"
 
-PhysicsComponent::PhysicsComponent(GameObject *parent): parent(parent) {}
+PhysicsComponent::PhysicsComponent() {}
 
 //Currently, this only works for square objects that are axis-aligned
 void PhysicsComponent::check_collision(GameObject *o) {
@@ -25,4 +25,12 @@ void PhysicsComponent::add_collision(GameObject *o) {
 
 void PhysicsComponent::clear_collisions() {
     collisions.clear();
+}
+
+GameObject *PhysicsComponent::get_parent() const {
+    return parent;
+}
+
+void PhysicsComponent::set_parent(GameObject *parent) {
+    PhysicsComponent::parent = parent;
 }

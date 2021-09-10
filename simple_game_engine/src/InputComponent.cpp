@@ -5,7 +5,7 @@
 #include "../include/GameObject.h"
 #include "../include/InputComponent.h"
 
-InputComponent::InputComponent(GameObject *parent): parent(parent) {}
+InputComponent::InputComponent() {}
 
 bool InputComponent::check_mouse_over(int mouse_x, int mouse_y) {
     if(mouse_x > parent->get_x() && mouse_y > parent->get_y() &&
@@ -20,4 +20,12 @@ bool InputComponent::check_mouse_over(int mouse_x, int mouse_y) {
 
 bool InputComponent::is_mouse_over() const {
     return mouse_over;
+}
+
+GameObject *InputComponent::get_parent() const {
+    return parent;
+}
+
+void InputComponent::set_parent(GameObject *parent) {
+    InputComponent::parent = parent;
 }

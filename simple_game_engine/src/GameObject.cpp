@@ -14,15 +14,18 @@ GameObject::GameObject(int pos_x, int pos_y, int width, int height)
 
 void GameObject::add_input(InputComponent *input)
 {
+    input->set_parent(this);
     input_component = input;
 }
 
 void GameObject::add_graphics(GraphicsComponent *graphics)
 {
+    graphics->set_parent(this);
     graphics_component = graphics;
 }
 
 void GameObject::add_physics(PhysicsComponent *physics) {
+    physics->set_parent(this);
     physics_component = physics;
 }
 

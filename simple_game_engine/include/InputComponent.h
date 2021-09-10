@@ -15,11 +15,13 @@ class InputComponent {
         GameObject *parent;
         bool mouse_over=false;
     public:
-            InputComponent() = default;
-            InputComponent(GameObject *parent);
-            virtual int process(GameEvent e) = 0;
-            bool check_mouse_over(int mouse_x, int mouse_y);
-            bool is_mouse_over() const;
+        InputComponent();
+        virtual int process(GameEvent e) = 0;
+        bool check_mouse_over(int mouse_x, int mouse_y);
+        bool is_mouse_over() const;
+
+        virtual GameObject *get_parent() const;
+        virtual void set_parent(GameObject *parent);
 };
 
 #endif

@@ -18,7 +18,7 @@ TextObject::TextObject(int pos_x, int pos_y, int width, int height, const std::s
         adapt_size(texture);
     }
     //Indicate that the texture should be destroyed along with the GraphicsComponent
-    add_graphics(new GraphicsComponent(texture, renderer, this, false));
+    add_graphics(new GraphicsComponent(texture, renderer, false));
 }
 
 SDL_Texture *TextObject::generate_texture(const std::string &t, TTF_Font *f,

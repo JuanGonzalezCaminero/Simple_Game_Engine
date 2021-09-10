@@ -29,4 +29,12 @@ int SnakeInputComponent::process(GameEvent e) {
     return 0;
 }
 
-SnakeInputComponent::SnakeInputComponent(SnakeHead *parent): parent(parent) {}
+SnakeInputComponent::SnakeInputComponent(): InputComponent() {}
+
+SnakeHead *SnakeInputComponent::get_parent() const {
+    return parent;
+}
+
+void SnakeInputComponent::set_parent(GameObject *parent) {
+    SnakeInputComponent::parent = dynamic_cast<SnakeHead*>(parent);
+}

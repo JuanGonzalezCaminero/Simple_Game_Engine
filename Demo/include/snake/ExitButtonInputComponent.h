@@ -9,7 +9,7 @@
 
 class ExitButtonInputComponent : public InputComponent{
     public:
-        ExitButtonInputComponent(GameObject *parent);
+        ExitButtonInputComponent();
         int process(GameEvent e) override;
 };
 

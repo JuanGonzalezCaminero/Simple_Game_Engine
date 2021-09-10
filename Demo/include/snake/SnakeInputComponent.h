@@ -9,10 +9,15 @@
 #include "SnakeHead.h"
 
 class SnakeInputComponent : public InputComponent {
+    private:
+        SnakeHead *parent = NULL;
+
     public:
-        SnakeHead *parent;
-        SnakeInputComponent(SnakeHead *parent);
+        SnakeInputComponent();
         int process(GameEvent e) override;
+
+        SnakeHead *get_parent() const override;
+        void set_parent(GameObject *parent) override;
 };
 
 

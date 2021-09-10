@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "iostream"
 
-ExitButtonInputComponent::ExitButtonInputComponent(GameObject *parent) : InputComponent(parent) {}
+ExitButtonInputComponent::ExitButtonInputComponent() : InputComponent() {}
 
 int ExitButtonInputComponent::process(GameEvent e) {
     switch(e.get_type())
