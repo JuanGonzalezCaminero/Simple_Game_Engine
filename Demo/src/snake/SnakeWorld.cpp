@@ -5,12 +5,15 @@
 #include "../../include/snake/SnakeWorld.h"
 #include "random"
 #include "iostream"
+#include "time.h"
 
 void SnakeWorld::update(std::chrono::duration<double> delta) {
+    srand(time(NULL));
     //Generate a new fruit
     if(fruit==NULL)
     {
-        fruit = new SimpleObject((rand()%(tiles))*tile_size, (rand()%(tiles))*tile_size, tile_size, tile_size);
+        fruit = new SimpleObject((rand() % (tiles)) * tile_size, (rand() % (tiles)) * tile_size, tile_size, tile_size,
+                                 {ABS, ABS, ABS, ABS});
         fruit->add_graphics(new GraphicsComponent("../assets/textures/snake_fruit.bmp", graphics_component->get_renderer()));
         fruit->add_physics(new PhysicsComponent());
         add(fruit);
@@ -31,10 +34,11 @@ void SnakeWorld::update(std::chrono::duration<double> delta) {
     ContainerObject::update(delta);
 }
 
-SnakeWorld::SnakeWorld(int pos_x, int pos_y, int size_x, int size_y, int tiles, ContainerObject *scoreboard,
+SnakeWorld::SnakeWorld(int x, int y, int width, int height, struct UnitType unit_type, int tiles,
+                       ContainerObject *scoreboard,
                        CounterTextObject<int> *score_count) :
-                        ContainerObject(pos_x, pos_y, size_x, size_y),
+                        ContainerObject(x, y, width, height, unit_type),
                         tiles(tiles), scoreboard(scoreboard), score_count(score_count)
 {
-    tile_size = size_x/tiles;
+    tile_size = width / tiles;
 }

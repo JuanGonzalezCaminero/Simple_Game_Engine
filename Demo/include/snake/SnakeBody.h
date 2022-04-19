@@ -10,7 +10,7 @@
 class SnakeBody : public SimpleObject{
     public:
         int ttl;
-        SnakeBody(int pos_x, int pos_y, int size_x, int size_y, int ttl);
+        SnakeBody(int x, int y, int width, int height, struct UnitType unit_type, int ttl);
         void update(std::chrono::duration<double> delta) override;
 };
 

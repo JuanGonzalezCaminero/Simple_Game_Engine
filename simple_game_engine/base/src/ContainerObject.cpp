@@ -7,24 +7,46 @@
 
 void ContainerObject::add(GameObject *o)
 {
+    //Sets the object's parent
+    o->set_parent(this);
+
     //Take the object's coordinates as local coordinates within this ContainerObject
-    o->set_x(o->get_x() + x);
-    o->set_y(o->get_y() + y);
+
+    //Absolute positioning: Adds the object's coordinates to the parent's origin
+    if(o->get_unit_type().x_type == ABS)
+    {
+        o->set_x(o->get_x() + x);
+    }
+    if(o->get_unit_type().y_type == ABS)
+    {
+        o->set_y(o->get_y() + y);
+    }
+
+    //Percentage positioning: Adds a percentage of the parent's width and height to the
+    //parent's origin. For width and height, sets them to a percentage of the parent's size
+    if(o->get_unit_type().x_type == REL)
+    {
+        o->set_x(o->get_x()/100.0 * width + x);
+    }
+    if(o->get_unit_type().y_type == REL)
+    {
+        o->set_y(o->get_y()/100.0 * height + y);
+    }
+    if(o->get_unit_type().width_type == REL)
+    {
+        o->set_width(o->get_width()/100.0 * width);
+    }
+    if(o->get_unit_type().height_type == REL)
+    {
+        o->set_height(o->get_height()/100.0 * height);
+    }
+
+    //Update the components list
     this -> components.push_back(o);
 }
 
 void ContainerObject::remove(GameObject *o)
 {
-    /*
-    int i=0;
-    for(auto component: components)
-    {
-        if(component == o)
-        {
-            components.
-        }
-    }
-     */
     //Compare references and remove the requested object
     components.remove(o);
 }
@@ -52,7 +74,8 @@ void ContainerObject::render() {
     }
 }
 
-ContainerObject::ContainerObject(int pos_x, int pos_y, int width, int height) : GameObject(pos_x, pos_y, width, height) {}
+ContainerObject::ContainerObject(int x, int y, int width, int height, struct UnitType unit_type)
+        : GameObject(x, y, width, height, unit_type) {}
 
 void ContainerObject::check_collisions() {
     //This is a very inefficient way of checking for collisions.

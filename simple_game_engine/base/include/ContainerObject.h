@@ -12,7 +12,7 @@ class ContainerObject : public GameObject{
     protected:
         std::list<GameObject*> components;
     public:
-        ContainerObject(int pos_x, int pos_y, int width, int height);
+        ContainerObject(int x, int y, int width, int height, struct UnitType unit_type);
         void add(GameObject *o);
         void remove(GameObject *o);
         void update(std::chrono::duration<double> delta) override;

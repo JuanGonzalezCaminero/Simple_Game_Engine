@@ -17,7 +17,7 @@ class SnakeHead : public ContainerObject{
         double moves_per_second;
         double accumulated_wait = 0;
         ContainerObject *world;
-        SnakeHead(int pos_x, int pos_y, int size_x, int size_y, int length, int moves_per_second,
+        SnakeHead(int x, int y, int width, int height, struct UnitType unit_type, int length, int moves_per_second,
                   ContainerObject *world);
         void update(std::chrono::duration<double> delta) override;
         void increase_length(int increase);

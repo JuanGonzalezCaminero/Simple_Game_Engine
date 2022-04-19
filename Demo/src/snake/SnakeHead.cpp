@@ -5,9 +5,9 @@
 #include "../../include/snake/SnakeHead.h"
 #include "iostream"
 
-SnakeHead::SnakeHead(int pos_x, int pos_y, int size_x, int size_y, int length, int moves_per_second,
+SnakeHead::SnakeHead(int x, int y, int width, int height, struct UnitType unit_type, int length, int moves_per_second,
                      ContainerObject *world) :
-    ContainerObject(pos_x, pos_y, size_x, size_y),
+        ContainerObject(x, y, width, height, unit_type),
     length(length),
     moves_per_second(moves_per_second),
     world(world)
@@ -23,7 +23,7 @@ void SnakeHead::update(std::chrono::duration<double> delta)
         accumulated_wait = 0;
 
         //Add a new body part at the head's position
-        SnakeBody *new_part = new SnakeBody(0, 0, width, height, length);
+        SnakeBody *new_part = new SnakeBody(0, 0, width, height, {ABS, ABS, ABS, ABS}, length);
         new_part->add_graphics(new GraphicsComponent(graphics_component->get_texture(), graphics_component->get_renderer(), true));
         new_part->add_physics(new PhysicsComponent());
         add(new_part);

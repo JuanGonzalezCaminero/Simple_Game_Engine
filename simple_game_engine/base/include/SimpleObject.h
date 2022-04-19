@@ -9,7 +9,7 @@
 
 class SimpleObject : public GameObject{
     public:
-        SimpleObject(int pos_x, int pos_y, int width, int height);
+        SimpleObject(int x, int y, int width, int height, struct UnitType unit_type);
         void update(std::chrono::duration<double> delta) override;
         void render() override;
 };

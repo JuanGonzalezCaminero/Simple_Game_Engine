@@ -5,7 +5,8 @@
 #include "../../include/snake/SnakeBody.h"
 #include "iostream"
 
-SnakeBody::SnakeBody(int pos_x, int pos_y, int size_x, int size_y, int ttl): SimpleObject(pos_x, pos_y, size_x, size_y), ttl(ttl) {}
+SnakeBody::SnakeBody(int x, int y, int width, int height, struct UnitType unit_type, int ttl) :
+        SimpleObject(x, y, width, height, unit_type), ttl(ttl) {}
 
 void SnakeBody::update(std::chrono::duration<double> delta) {
     ttl-=1;

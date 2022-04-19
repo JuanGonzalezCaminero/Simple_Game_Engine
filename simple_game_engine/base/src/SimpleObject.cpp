@@ -5,7 +5,8 @@
 #include "../include/SimpleObject.h"
 
 
-SimpleObject::SimpleObject(int pos_x, int pos_y, int width, int height) : GameObject(pos_x, pos_y, width, height) {}
+SimpleObject::SimpleObject(int x, int y, int width, int height, struct UnitType unit_type) :
+        GameObject(x, y, width, height, unit_type) {}
 
 void SimpleObject::update(std::chrono::duration<double> delta)
 {

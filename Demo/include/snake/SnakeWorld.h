@@ -19,7 +19,8 @@ class SnakeWorld : public ContainerObject{
         int tiles;
         int tile_size;
     public:
-        SnakeWorld(int pos_x, int pos_y, int size_x, int size_y, int tiles, ContainerObject *scoreboard,
+        SnakeWorld(int x, int y, int width, int height, struct UnitType unit_type, int tiles,
+                   ContainerObject *scoreboard,
                    CounterTextObject<int> *score_count);
         void update(std::chrono::duration<double> delta) override;
 };

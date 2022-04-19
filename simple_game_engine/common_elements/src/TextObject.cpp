@@ -5,10 +5,11 @@
 #include "../include/TextObject.h"
 #include "iostream"
 
-TextObject::TextObject(int pos_x, int pos_y, int width, int height, const std::string &text, TTF_Font *font,
+TextObject::TextObject(int x, int y, int width, int height, struct UnitType unit_type, const std::string &text,
+                       TTF_Font *font,
                        SDL_Color *text_color, SDL_Renderer *renderer, bool adapt_to_text) :
-                       SimpleObject(pos_x, pos_y, width, height), text(text), font(font), text_color(text_color),
-                       adapt_to_text(adapt_to_text)
+        SimpleObject(x, y, width, height, unit_type),
+        text(text), font(font), text_color(text_color), adapt_to_text(adapt_to_text)
 {
     //A text object creates its own texture with the text
     SDL_Texture *texture = generate_texture(text, font, text_color, renderer);

@@ -6,15 +6,17 @@
 #define SDL_INPUTHANDLING_COUNTERTEXTOBJECT_H
 
 #include "TextObject.h"
+#include "iostream"
 
 template<class N>
 class CounterTextObject : public TextObject{
     private:
         N number;
     public:
-        CounterTextObject(int posX, int posY, int width, int height, N number, TTF_Font *font, SDL_Color *textColor,
-                          SDL_Renderer *renderer, bool adapt_to_text) :
-                          TextObject(posX, posY, width, height, std::to_string(number), font, textColor, renderer, adapt_to_text), number(number){};
+        CounterTextObject(int x, int y, int height, int width, struct UnitType unit_type, N number, TTF_Font *font,
+                          SDL_Color *textColor, SDL_Renderer *renderer, bool adapt_to_text) :
+                TextObject(x, y, width, height, unit_type, std::to_string(number),
+                           font, textColor, renderer, adapt_to_text), number(number){};
         void add(N n) {
             number+=n;
             set_text(std::to_string(number));

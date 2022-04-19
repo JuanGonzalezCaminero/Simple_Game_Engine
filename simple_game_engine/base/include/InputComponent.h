@@ -17,6 +17,7 @@ class InputComponent {
     public:
         InputComponent();
         virtual int process(GameEvent e) = 0;
+
         bool check_mouse_over(int mouse_x, int mouse_y);
         bool is_mouse_over() const;
 
