@@ -8,6 +8,8 @@
 
 InputHandler::InputHandler() {}
 
+//TODO: The user should be able to configure the mapping between SDL Event and Game Events through an external \
+// configuration file, without modifying the code
 
 void InputHandler::process_input()
 {
