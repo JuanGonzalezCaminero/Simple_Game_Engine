@@ -2,32 +2,23 @@
 #include "chrono"
 
 #include "SDL.h"
-#include "SDL_image.h"
 
 #include "InputHandler.h"
 #include "GameObject.h"
 #include "GraphicsComponent.h"
-#include "SimpleObject.h"
-#include "ContainerObject.h"
 #include "SDL_gamecontroller.h"
 
-#include "../include/GameInputComponent.h"
-#include "../include/snake/SnakeHead.h"
-#include "../include/snake/SnakeInputComponent.h"
-#include "../include/snake/SnakeWorld.h"
-#include "../include/snake/SnakeRoot.h"
-#include "../include/snake/ExitButtonInputComponent.h"
+#include "GameInputComponent.h"
+#include "SnakeRoot.h"
 #include "TextObject.h"
-#include "CounterTextObject.h"
 
 int main(int argc, char *argv[]) {
     SDL_Window *window = nullptr;
     SDL_Renderer *renderer = nullptr;
-    SDL_Event event;
     int quit = 0;
     int window_width = 400, window_height = 600;
     InputHandler *input_handler = new InputHandler();
-    GameInputComponent game_input(nullptr, window, renderer, &quit);
+    GameInputComponent game_input(nullptr, &quit);
 
     input_handler->add(&game_input);
 

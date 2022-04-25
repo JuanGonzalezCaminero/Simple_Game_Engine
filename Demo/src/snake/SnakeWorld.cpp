@@ -2,7 +2,7 @@
 // Created by Juan on 03/09/2021.
 //
 
-#include "../../include/snake/SnakeWorld.h"
+#include "SnakeWorld.h"
 #include "random"
 #include "iostream"
 #include "time.h"

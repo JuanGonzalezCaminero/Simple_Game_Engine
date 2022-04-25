@@ -2,7 +2,7 @@
 // Created by Juan on 16/08/2021.
 //
 
-#include "../include/GameObject.h"
+#include "GameObject.h"
 
 GameObject::GameObject(int x, int y, int width, int height, UnitType unit_type):
 x(x), y(y), width(width), height(height), unit_type(unit_type){}

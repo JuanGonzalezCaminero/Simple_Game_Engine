@@ -2,7 +2,7 @@
 // Created by Juan on 16/08/2021.
 //
 
-#include "../include/SimpleObject.h"
+#include "SimpleObject.h"
 
 
 SimpleObject::SimpleObject(int x, int y, int width, int height, struct UnitType unit_type) :

@@ -2,8 +2,8 @@
 // Created by Juan on 03/09/2021.
 //
 
-#include "../include/PhysicsComponent.h"
-#include "../include/GameObject.h"
+#include "PhysicsComponent.h"
+#include "GameObject.h"
 
 PhysicsComponent::PhysicsComponent() {}
 

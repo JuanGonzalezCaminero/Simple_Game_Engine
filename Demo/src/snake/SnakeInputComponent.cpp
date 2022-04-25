@@ -2,7 +2,7 @@
 // Created by Juan on 01/09/2021.
 //
 
-#include "../../include/snake/SnakeInputComponent.h"
+#include "SnakeInputComponent.h"
 
 int SnakeInputComponent::process(GameEvent e) {
     if(e.get_type() == GameEventType::UpPressed)

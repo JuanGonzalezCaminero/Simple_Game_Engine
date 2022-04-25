@@ -2,8 +2,8 @@
 // Created by Juan on 17/08/2021.
 //
 
-#include "../include/GraphicsComponent.h"
-#include "../include/GameObject.h"
+#include "GraphicsComponent.h"
+#include "GameObject.h"
 
 #include "iostream"
 

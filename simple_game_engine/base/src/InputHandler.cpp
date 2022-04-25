@@ -2,7 +2,7 @@
 // Created by Juan on 10/08/2021.
 //
 
-#include "../include/InputHandler.h"
+#include "InputHandler.h"
 #include <iostream>
 #include "unordered_map"
 

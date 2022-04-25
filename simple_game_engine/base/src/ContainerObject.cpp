@@ -2,7 +2,7 @@
 // Created by Juan on 16/08/2021.
 //
 
-#include "../include/ContainerObject.h"
+#include "ContainerObject.h"
 #include "iostream"
 
 void ContainerObject::add(GameObject *o)

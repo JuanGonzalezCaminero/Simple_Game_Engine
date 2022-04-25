@@ -2,14 +2,14 @@
 // Created by Juan on 04/09/2021.
 //
 
-#include "../../include/snake/SnakeRoot.h"
+#include "SnakeRoot.h"
 #include "SDL_ttf.h"
 #include "TextObject.h"
 #include "CounterTextObject.h"
-#include "../../include/snake/ExitButtonInputComponent.h"
-#include "../../include/snake/SnakeWorld.h"
-#include "../../include/snake/SnakeHead.h"
-#include "../../include/snake/SnakeInputComponent.h"
+#include "ExitButtonInputComponent.h"
+#include "SnakeWorld.h"
+#include "SnakeHead.h"
+#include "SnakeInputComponent.h"
 
 SnakeRoot::SnakeRoot(int pos_x, int pos_y, int width, int height, InputHandler *input_handler, int window_width,
                      int window_height, SDL_Renderer *renderer) :
@@ -17,9 +17,9 @@ SnakeRoot::SnakeRoot(int pos_x, int pos_y, int width, int height, InputHandler *
                     ContainerObject(pos_x, pos_y, width, height, unit_type)
 {
     //Init game objects
-    int scoreboard_width = window_width;
-    int snake_world_size = window_width;
-    int scoreboard_height = window_height-snake_world_size;
+    int scoreboard_width = this->window_width;
+    int snake_world_size = this->window_width;
+    int scoreboard_height = this->window_height-snake_world_size;
     int snake_world_tiles = 20;
 
     //Scoreboard
@@ -82,8 +82,8 @@ SnakeRoot::SnakeRoot(int pos_x, int pos_y, int width, int height, InputHandler *
     snake->add_physics(new PhysicsComponent());
 
     //Connect Input consumers to the input handler
-    input_handler->add(snake->get_input());
-    input_handler->add(exit_button->get_input());
+    this->input_handler->add(snake->get_input());
+    this->input_handler->add(exit_button->get_input());
 
     //Build the game tree:
     /*

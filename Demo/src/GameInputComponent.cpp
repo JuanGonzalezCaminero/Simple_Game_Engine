@@ -2,10 +2,10 @@
 // Created by Juan on 16/08/2021.
 //
 
-#include "../include/GameInputComponent.h"
+#include "GameInputComponent.h"
 
-GameInputComponent::GameInputComponent(GameObject *parent, SDL_Window *win, SDL_Renderer *rend, int *q)
-        : InputComponent(), window(win), renderer(rend), quit(q) {}
+GameInputComponent::GameInputComponent(GameObject *parent, int *q)
+        : InputComponent(), quit(q) {}
 
 int GameInputComponent::process(GameEvent e) {
     switch(e.get_type())

@@ -5,17 +5,14 @@
 #ifndef SDL_INPUTHANDLING_GAMEINPUTCOMPONENT_H
 #define SDL_INPUTHANDLING_GAMEINPUTCOMPONENT_H
 
-#include "SDL.h"
 #include "GameEvent.h"
 #include "InputComponent.h"
 
 class GameInputComponent : public InputComponent{
     private:
-        SDL_Window *window;
-        SDL_Renderer *renderer;
         int *quit;
     public:
-        GameInputComponent(GameObject *parent, SDL_Window *win, SDL_Renderer *rend, int *q);
+        GameInputComponent(GameObject *parent, int *q);
         int process(GameEvent e) override;
 
 };

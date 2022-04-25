@@ -2,7 +2,7 @@
 // Created by Juan on 10/09/2021.
 //
 
-#include "../../include/snake/ExitButtonInputComponent.h"
+#include "ExitButtonInputComponent.h"
 #include "GameObject.h"
 #include "iostream"
 

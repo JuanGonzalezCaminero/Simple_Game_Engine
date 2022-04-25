@@ -8,7 +8,7 @@
 #include "ContainerObject.h"
 #include "SimpleObject.h"
 #include "SnakeHead.h"
-#include "../../../simple_game_engine/common_elements/include/CounterTextObject.h"
+#include "CounterTextObject.h"
 
 class SnakeWorld : public ContainerObject{
     private:

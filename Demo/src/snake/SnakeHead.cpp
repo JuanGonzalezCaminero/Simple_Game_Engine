@@ -2,7 +2,7 @@
 // Created by Juan on 01/09/2021.
 //
 
-#include "../../include/snake/SnakeHead.h"
+#include "SnakeHead.h"
 #include "iostream"
 
 SnakeHead::SnakeHead(int x, int y, int width, int height, struct UnitType unit_type, int length, int moves_per_second,

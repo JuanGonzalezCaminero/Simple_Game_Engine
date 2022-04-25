@@ -2,7 +2,7 @@
 // Created by Juan on 01/09/2021.
 //
 
-#include "../../include/snake/SnakeBody.h"
+#include "SnakeBody.h"
 #include "iostream"
 
 SnakeBody::SnakeBody(int x, int y, int width, int height, struct UnitType unit_type, int ttl) :
