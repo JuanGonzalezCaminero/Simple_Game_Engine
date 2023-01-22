@@ -17,9 +17,9 @@ SnakeRoot::SnakeRoot(int pos_x, int pos_y, int width, int height, InputHandler *
                     ContainerObject(pos_x, pos_y, width, height, unit_type)
 {
     //Init game objects
-    int scoreboard_width = this->window_width;
-    int snake_world_size = this->window_width;
-    int scoreboard_height = this->window_height-snake_world_size;
+    int scoreboard_width = window_width;
+    int snake_world_size = window_width;
+    int scoreboard_height = window_height-snake_world_size;
     int snake_world_tiles = 20;
 
     //Scoreboard

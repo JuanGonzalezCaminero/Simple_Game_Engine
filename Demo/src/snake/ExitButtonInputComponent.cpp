@@ -28,7 +28,6 @@ int ExitButtonInputComponent::process(GameEvent e) {
                     std::cout << "Mouse out!" << std::endl;
                 }
             }
-
             //In this case I will not consume this event, so it will be passed to other components
             return 0;
         case(GameEventType::MouseLeftPressed):
@@ -40,12 +39,5 @@ int ExitButtonInputComponent::process(GameEvent e) {
         default:
             break;
     }
-    if(e.get_type() == GameEventType::MouseMove)
-    {
-        //std::cout << "Hey!" << std::endl;
-
-    }
-
-
     return 0;
 }

@@ -9,7 +9,7 @@
 #include "SDL_gamecontroller.h"
 
 #include "GameInputComponent.h"
-#include "SnakeRoot.h"
+#include "snake/SnakeRoot.h"
 #include "TextObject.h"
 
 int main(int argc, char *argv[]) {
